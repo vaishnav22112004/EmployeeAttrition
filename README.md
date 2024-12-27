@@ -123,4 +123,5 @@ Clone the project
 ```bash
   git clone https://github.com/vaishnav22112004/EmployeeAttrition
 ```
-
+## Training The Model
+The final model pickle file is already uploaded. It is generated from the google colab file that is posted.
