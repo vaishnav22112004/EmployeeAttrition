@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Attrition Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="Age">Age</label>
+                <input type="number" name="Age" id="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="BusinessTravel">Business Travel</label>
+                <select name="BusinessTravel" id="BusinessTravel" required>
+                    <option value="Rarely">Rarely</option>
+                    <option value="Frequently">Frequently</option>
+                    <option value="No Travel">No Travel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="DailyRate">Daily Rate</label>
+                <input type="number" name="DailyRate" id="DailyRate" required>
+            </div>
+            <div class="form-group">
+                <label for="Department">Department</label>
+                <select name="Department" id="Department" required>
+                    <option value="Sales">Sales</option>
+                    <option value="Research & Development">Research & Development</option>
+                    <option value="Human Resources">Human Resources</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="DistanceFromHome">Distance From Home</label>
+                <input type="number" name="DistanceFromHome" id="DistanceFromHome" required>
+            </div>
+            <div class="form-group">
+                <label for="Education">Education</label>
+                <input type="number" name="Education" id="Education" required>
+            </div>
+            <div class="form-group">
+                <label for="EducationField">Education Field</label>
+                <select name="EducationField" id="EducationField" required>
+                    <option value="Life Sciences">Life Sciences</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Technical Degree">Technical Degree</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="EnvironmentSatisfaction">Environment Satisfaction</label>
+                <input type="number" name="EnvironmentSatisfaction" id="EnvironmentSatisfaction" required>
+            </div>
+            <div class="form-group">
+                <label for="Gender">Gender</label>
+                <select name="Gender" id="Gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="HourlyRate">Hourly Rate</label>
+                <input type="number" name="HourlyRate" id="HourlyRate" required>
+            </div>
+            <div class="form-group">
+                <label for="JobInvolvement">Job Involvement</label>
+                <input type="number" name="JobInvolvement" id="JobInvolvement" required>
+            </div>
+            <div class="form-group">
+                <label for="JobRole">Job Role</label>
+                <select name="JobRole" id="JobRole" required>
+                    <option value="Sales Executive">Sales Executive</option>
+                    <option value="Research Scientist">Research Scientist</option>
+                    <option value="Laboratory Technician">Laboratory Technician</option>
+                    <option value="Manufacturing Director">Manufacturing Director</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="JobLevel">Job Level</label>
+                <input type="number" name="JobLevel" id="JobLevel" required>
+            </div>
+            <div class="form-group">
+                <label for="JobSatisfaction">Job Satisfaction</label>
+                <input type="number" name="JobSatisfaction" id="JobSatisfaction" required>
+            </div>
+            <div class="form-group">
+                <label for="MaritalStatus">Marital Status</label>
+                <select name="MaritalStatus" id="MaritalStatus" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="MonthlyIncome">Monthly Income</label>
+                <input type="number" name="MonthlyIncome" id="MonthlyIncome" required>
+            </div>
+            <div class="form-group">
+                <label for="NumCompaniesWorked">Number of Companies Worked</label>
+                <input type="number" name="NumCompaniesWorked" id="NumCompaniesWorked" required>
+            </div>
+            <div class="form-group">
+                <label for="OverTime">Over Time</label>
+                <select name="OverTime" id="OverTime" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="PerformanceRating">Performance Rating</label>
+                <input type="number" name="PerformanceRating" id="PerformanceRating" required>
+            </div>
+            <div class="form-group">
+                <label for="RelationshipSatisfaction">Relationship Satisfaction</label>
+                <input type="number" name="RelationshipSatisfaction" id="RelationshipSatisfaction" required>
+            </div>
+            <div class="form-group">
+                <label for="StockOptionLevel">Stock Option Level</label>
+                <input type="number" name="StockOptionLevel" id="StockOptionLevel" required>
+            </div>
+            <div class="form-group">
+                <label for="TotalWorkingYears">Total Working Years</label>
+                <input type="number" name="TotalWorkingYears" id="TotalWorkingYears" required>
+            </div>
+            <div class="form-group">
+                <label for="TrainingTimesLastYear">Training Times Last Year</label>
+                <input type="number" name="TrainingTimesLastYear" id="TrainingTimesLastYear" required>
+            </div>
+            <div class="form-group">
+                <label for="WorkLifeBalance">Work Life Balance</label>
+                <input type="number" name="WorkLifeBalance" id="WorkLifeBalance" required>
+            </div>
+            <div class="form-group">
+                <label for="YearsAtCompany">Years At Company</label>
+                <input type="number" name="YearsAtCompany" id="YearsAtCompany" required>
+            </div>
+            <div class="form-group">
+                <label for="YearsInCurrentRole">Years In Current Role</label>
+                <input type="number" name="YearsInCurrentRole" id="YearsInCurrentRole" required>
+            </div>
+            <div class="form-group">
+                <label for="YearsSinceLastPromotion">Years Since Last Promotion</label>
+                <input type="number" name="YearsSinceLastPromotion" id="YearsSinceLastPromotion" required>
+            </div>
+            <div class="form-group">
+                <label for="YearsWithCurrManager">Years With Current Manager</label>
+                <input type="number" name="YearsWithCurrManager" id="YearsWithCurrManager" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <div class="result">
+                <strong>Result: </strong>{{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
