@@ -124,6 +124,3 @@ Clone the project
   git clone https://github.com/vaishnav22112004/EmployeeAttrition
 ```
 
-
-```
-
